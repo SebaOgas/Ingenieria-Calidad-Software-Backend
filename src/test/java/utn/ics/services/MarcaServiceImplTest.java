@@ -33,7 +33,7 @@ class MarcaServiceImplTest {
 
         Optional<Marca> optionalMarca = Optional.of(marca);
 
-        when(marcaRepository.findByNombre(nombre)).thenReturn(optionalMarca);
+        when(marcaRepository.findByNombre(nombre + "error")).thenReturn(optionalMarca);
 
         Marca m = marcaService.getByNombre(nombre);
         assertEquals(nombre, m.getNombre());
