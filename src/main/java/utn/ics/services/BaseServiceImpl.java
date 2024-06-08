@@ -1,8 +1,6 @@
 package utn.ics.services;
 
 import jakarta.transaction.Transactional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import utn.ics.entities.BaseEntity;
 import utn.ics.repositories.BaseRepository;
 

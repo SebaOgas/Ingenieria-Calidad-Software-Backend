@@ -1,10 +1,10 @@
 package utn.ics.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import utn.ics.config.Parameter;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -13,10 +13,10 @@ import lombok.EqualsAndHashCode;
 @Builder
 public class Producto extends BaseEntity{
 
-    @Column(name = "nombre", length = 256, nullable = false, unique = true)
+    @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
     private String nombre;
 
-    @Column(name = "descripcion", length = 1024, nullable = true)
+    @Column(name = "descripcion", length = Parameter.longStringLength, nullable = true)
     private String descripcion;
 
     @Column(name = "visibilidad", nullable = false)

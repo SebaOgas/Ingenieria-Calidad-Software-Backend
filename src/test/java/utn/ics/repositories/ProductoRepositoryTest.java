@@ -10,7 +10,7 @@ import utn.ics.entities.Producto;
 import java.util.Calendar;
 import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 class ProductoRepositoryTest {

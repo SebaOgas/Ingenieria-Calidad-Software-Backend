@@ -2,11 +2,9 @@ package utn.ics.repositories;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import utn.ics.entities.Marca;
 import utn.ics.entities.Producto;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @Repository
 public interface ProductoRepository extends BaseRepository<Producto, Long> {

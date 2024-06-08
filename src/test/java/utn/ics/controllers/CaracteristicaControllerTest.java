@@ -12,14 +12,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import utn.ics.IcsApplication;
 import utn.ics.entities.Caracteristica;
 import utn.ics.entities.ValorCaracteristica;
-import utn.ics.services.CaracteristicaService;
 import utn.ics.services.CaracteristicaServiceImpl;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Mockito.when;
 
 
 @SpringBootTest(classes = IcsApplication.class)
