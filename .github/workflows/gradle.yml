@@ -16,16 +16,14 @@ env:
 
 jobs:
   formatting:
-    name: Format
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v4
-      
-      - uses: axel-op/googlejavaformat-action@v3
+      - if: github.event_name != 'pull_request'
+        uses: actions/checkout@v2
+      - if: github.event_name == 'pull_request'
+        uses: actions/checkout@v2
         with:
-          args: "--replace"
+          ref: ${{ github.event.pull_request.head.ref }}
           
   linting:
     name: Lint
