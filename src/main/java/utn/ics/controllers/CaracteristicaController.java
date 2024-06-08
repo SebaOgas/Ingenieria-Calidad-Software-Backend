@@ -9,5 +9,5 @@ import utn.ics.services.CaracteristicaServiceImpl;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "caracteristica")
-public class CaracteristicaController extends BaseControllerImpl<Caracteristica, CaracteristicaServiceImpl> {
-}
+public class CaracteristicaController
+    extends BaseControllerImpl<Caracteristica, CaracteristicaServiceImpl> {}

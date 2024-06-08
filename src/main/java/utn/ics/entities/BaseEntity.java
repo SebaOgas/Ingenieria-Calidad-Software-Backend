@@ -16,12 +16,12 @@ import java.util.Date;
 @AllArgsConstructor
 public class BaseEntity implements Serializable {
 
-    @Id
-    @Column(name = "numero")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long numero;
+  @Id
+  @Column(name = "numero")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long numero;
 
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+  @Column(name = "fecha_baja")
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date fechaBaja;
 }

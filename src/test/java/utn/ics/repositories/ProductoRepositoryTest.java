@@ -1,16 +1,15 @@
 package utn.ics.repositories;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import jakarta.persistence.EntityManager;
+import java.util.Calendar;
+import java.util.Collection;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import utn.ics.entities.Marca;
 import utn.ics.entities.Producto;
-
-import java.util.Calendar;
-import java.util.Collection;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
 class ProductoRepositoryTest {

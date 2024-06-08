@@ -11,12 +11,13 @@ import utn.ics.services.MarcaServiceImpl;
 @RequestMapping(path = "marca")
 public class MarcaController extends BaseControllerImpl<Marca, MarcaServiceImpl> {
 
-    @GetMapping("/{nombre}")
-    public ResponseEntity<?> getByNombre(@PathVariable String nombre) {
-        try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.getByNombre(nombre));
-        } catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
-        }
+  @GetMapping("/{nombre}")
+  public ResponseEntity<?> getByNombre(@PathVariable String nombre) {
+    try {
+      return ResponseEntity.status(HttpStatus.OK).body(servicio.getByNombre(nombre));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND)
+          .body(("{\"error\": \"" + e.getMessage() + "\"}"));
     }
+  }
 }

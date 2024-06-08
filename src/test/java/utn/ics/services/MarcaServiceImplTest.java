@@ -14,29 +14,24 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest(classes = utn.ics.IcsApplication.class)
 class MarcaServiceImplTest {
-    @Autowired
-    private MarcaService marcaService;
+  @Autowired private MarcaService marcaService;
 
-    @MockBean
-    private MarcaRepository marcaRepository;
+  @MockBean private MarcaRepository marcaRepository;
 
-    @Test
-    void testMarcas() throws Exception {
+  @Test
+  void testMarcas() throws Exception {
 
-        String nombre = "Marca A";
-        String descripcion = "Descripción";
+    String nombre = "Marca A";
+    String descripcion = "Descripción";
 
-        Marca marca = Marca.builder()
-                .nombre(nombre)
-                .descripcion(descripcion)
-                .build();
+    Marca marca = Marca.builder().nombre(nombre).descripcion(descripcion).build();
 
-        Optional<Marca> optionalMarca = Optional.of(marca);
+    Optional<Marca> optionalMarca = Optional.of(marca);
 
-        when(marcaRepository.findByNombre(nombre)).thenReturn(optionalMarca);
+    when(marcaRepository.findByNombre(nombre)).thenReturn(optionalMarca);
 
-        Marca m = marcaService.getByNombre(nombre);
-        assertEquals(nombre, m.getNombre());
-        assertEquals(descripcion, m.getDescripcion());
-    }
+    Marca m = marcaService.getByNombre(nombre);
+    assertEquals(nombre, m.getNombre());
+    assertEquals(descripcion, m.getDescripcion());
+  }
 }

@@ -11,19 +11,22 @@ import utn.ics.config.Parameter;
 @Table(name = "producto")
 @Data
 @Builder
-public class Producto extends BaseEntity{
+public class Producto extends BaseEntity {
 
-    @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
-    private String nombre;
+  @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
+  private String nombre;
 
-    @Column(name = "descripcion", length = Parameter.longStringLength, nullable = true)
-    private String descripcion;
+  @Column(name = "descripcion", length = Parameter.longStringLength, nullable = true)
+  private String descripcion;
 
-    @Column(name = "visibilidad", nullable = false)
-    private Boolean visibilidad;
+  @Column(name = "visibilidad", nullable = false)
+  private Boolean visibilidad;
 
-    @ManyToOne
-    @JoinColumn(name = "marca_id", nullable = false, referencedColumnName = "numero", foreignKey = @ForeignKey(name = "FK_producto_marca"))
-    private Marca marca;
-
+  @ManyToOne
+  @JoinColumn(
+      name = "marca_id",
+      nullable = false,
+      referencedColumnName = "numero",
+      foreignKey = @ForeignKey(name = "FK_producto_marca"))
+  private Marca marca;
 }

@@ -13,11 +13,11 @@ import utn.ics.config.Parameter;
 @Table(name = "marca")
 @Data
 @Builder
-public class Marca extends BaseEntity{
+public class Marca extends BaseEntity {
 
-    @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
-    private String nombre;
+  @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
+  private String nombre;
 
-    @Column(name = "descripcion", length = Parameter.longStringLength, nullable = true)
-    private String descripcion;
+  @Column(name = "descripcion", length = Parameter.longStringLength, nullable = true)
+  private String descripcion;
 }

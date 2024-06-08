@@ -14,16 +14,15 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Caracteristica extends BaseEntity{
+public class Caracteristica extends BaseEntity {
 
-    @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
-    private String nombre;
+  @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
+  private String nombre;
 
-    @Builder.Default
-    @OneToMany
-    @JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "FK_valor_caracteristica_caracteristica"))
-    private Collection<ValorCaracteristica> valores = new ArrayList<>();
-
-
-
+  @Builder.Default
+  @OneToMany
+  @JoinColumn(
+      nullable = false,
+      foreignKey = @ForeignKey(name = "FK_valor_caracteristica_caracteristica"))
+  private Collection<ValorCaracteristica> valores = new ArrayList<>();
 }

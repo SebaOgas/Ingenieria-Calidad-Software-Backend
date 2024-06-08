@@ -15,6 +15,6 @@ import utn.ics.config.Parameter;
 @Builder
 public class ValorCaracteristica extends BaseEntity {
 
-    @Column(name = "valor", length = Parameter.shortStringLength, nullable = false, unique = false)
-    private String valor;
+  @Column(name = "valor", length = Parameter.shortStringLength, nullable = false, unique = false)
+  private String valor;
 }

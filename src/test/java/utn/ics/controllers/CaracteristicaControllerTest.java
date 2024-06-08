@@ -20,44 +20,35 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @SpringBootTest(classes = IcsApplication.class)
 @AutoConfigureMockMvc
 class CaracteristicaControllerTest {
-    @Autowired
-    private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-    @MockBean
-    private CaracteristicaServiceImpl caracteristicaService;
+  @MockBean private CaracteristicaServiceImpl caracteristicaService;
 
-    @Test
-    void testPost() throws Exception{
-        Caracteristica caracteristica = Caracteristica.builder()
-                .nombre("Color")
-                .build();
+  @Test
+  void testPost() throws Exception {
+    Caracteristica caracteristica = Caracteristica.builder().nombre("Color").build();
 
-        ValorCaracteristica valor1 = ValorCaracteristica.builder()
-                .valor("Azul")
-                .build();
-        caracteristica.getValores().add(valor1);
-        ValorCaracteristica valor2 = ValorCaracteristica.builder()
-                .valor("Amarillo")
-                .build();
-        caracteristica.getValores().add(valor2);
-        ValorCaracteristica valor3 = ValorCaracteristica.builder()
-                .valor("Rojo")
-                .build();
-        caracteristica.getValores().add(valor3);
+    ValorCaracteristica valor1 = ValorCaracteristica.builder().valor("Azul").build();
+    caracteristica.getValores().add(valor1);
+    ValorCaracteristica valor2 = ValorCaracteristica.builder().valor("Amarillo").build();
+    caracteristica.getValores().add(valor2);
+    ValorCaracteristica valor3 = ValorCaracteristica.builder().valor("Rojo").build();
+    caracteristica.getValores().add(valor3);
 
-        when(caracteristicaService.save(any())).thenReturn(caracteristica);
+    when(caracteristicaService.save(any())).thenReturn(caracteristica);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/caracteristica")
-                        .content(new ObjectMapper().writeValueAsString(caracteristica))
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.nombre", is("Color")))
-                .andExpect(jsonPath("$.valores[0].valor", is("Azul")))
-                .andExpect(jsonPath("$.valores[1].valor", is("Amarillo")))
-                .andExpect(jsonPath("$.valores[2].valor", is("Rojo")));
-    }
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/caracteristica")
+                .content(new ObjectMapper().writeValueAsString(caracteristica))
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.nombre", is("Color")))
+        .andExpect(jsonPath("$.valores[0].valor", is("Azul")))
+        .andExpect(jsonPath("$.valores[1].valor", is("Amarillo")))
+        .andExpect(jsonPath("$.valores[2].valor", is("Rojo")));
+  }
 }

@@ -9,20 +9,20 @@ import utn.ics.repositories.MarcaRepository;
 import java.util.Optional;
 
 @Service
-public class MarcaServiceImpl extends BaseServiceImpl<Marca, Long> implements MarcaService  {
+public class MarcaServiceImpl extends BaseServiceImpl<Marca, Long> implements MarcaService {
 
-    @Autowired
-    private final MarcaRepository marcaRepository;
+  @Autowired private final MarcaRepository marcaRepository;
 
-    public MarcaServiceImpl(BaseRepository<Marca, Long> baseRepository, MarcaRepository marcaRepository) {
-        super(baseRepository);
-        this.marcaRepository = marcaRepository;
-    }
+  public MarcaServiceImpl(
+      BaseRepository<Marca, Long> baseRepository, MarcaRepository marcaRepository) {
+    super(baseRepository);
+    this.marcaRepository = marcaRepository;
+  }
 
-    @Override
-    public Marca getByNombre(String nombre) throws Exception {
-        Optional<Marca> optionalMarca = marcaRepository.findByNombre(nombre);
-        if(optionalMarca.isEmpty()) throw new Exception("No se encontró la marca");
-        return optionalMarca.get();
-    }
+  @Override
+  public Marca getByNombre(String nombre) throws Exception {
+    Optional<Marca> optionalMarca = marcaRepository.findByNombre(nombre);
+    if (optionalMarca.isEmpty()) throw new Exception("No se encontró la marca");
+    return optionalMarca.get();
+  }
 }
