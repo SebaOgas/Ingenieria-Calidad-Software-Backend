@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.DirtiesContext;
 import utn.ics.entities.Paquete;
 import utn.ics.repositories.PaqueteRepository;
 import utn.ics.services.PaqueteServiceImpl;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest(classes = utn.ics.IcsApplication.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class PaqueteServiceImplTest {
     @Autowired
     private PaqueteServiceImpl paqueteService;
