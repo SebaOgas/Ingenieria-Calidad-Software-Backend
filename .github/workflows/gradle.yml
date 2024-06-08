@@ -13,18 +13,17 @@ env:
   VALIDATE_JSCPD: false
   VALIDATE_SHELL_SHFMT: false
   VALIDATE_GOOGLE_JAVA_FORMAT: false #Ya lo estamos formateando así, no tiene sentido verificarlo
-  VALIDATE_GITHUB_ACTIONS: false
 
 jobs:
   formatting:
     runs-on: ubuntu-latest
     steps:
       - if: github.event_name != 'pull_request'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - if: github.event_name == 'pull_request'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.head.ref}}
           
   linting:
     name: Lint
