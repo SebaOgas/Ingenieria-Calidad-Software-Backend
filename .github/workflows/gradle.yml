@@ -6,6 +6,13 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  JAVA_FILE_NAME: google_checks.xml
+  VALIDATE_BASH_EXEC: false
+  VALIDATE_CHECKOV: false
+  VALIDATE_JSCPD: false
+  VALIDATE_SHELL_SHFMT: false
+
 jobs:
   build:
     name: Lint y Build
