@@ -12,7 +12,7 @@ import java.util.Optional;
 public class MarcaServiceImpl extends BaseServiceImpl<Marca, Long> implements MarcaService  {
 
     @Autowired
-    private MarcaRepository marcaRepository;
+    private final MarcaRepository marcaRepository;
 
     public MarcaServiceImpl(BaseRepository<Marca, Long> baseRepository, MarcaRepository marcaRepository) {
         super(baseRepository);

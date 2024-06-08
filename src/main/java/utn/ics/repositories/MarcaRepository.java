@@ -8,5 +8,5 @@ import java.util.Optional;
 @Repository
 public interface MarcaRepository extends BaseRepository<Marca, Long> {
 
-    public Optional<Marca> findByNombre(String nombre);
+    Optional<Marca> findByNombre(String nombre);
 }

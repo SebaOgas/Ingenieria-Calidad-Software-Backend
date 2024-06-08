@@ -10,7 +10,7 @@ import utn.ics.repositories.CaracteristicaRepository;
 public class CaracteristicaServiceImpl extends BaseServiceImpl<Caracteristica, Long> implements CaracteristicaService  {
 
     @Autowired
-    private CaracteristicaRepository caracteristicaRepository;
+    private final CaracteristicaRepository caracteristicaRepository;
 
     public CaracteristicaServiceImpl(BaseRepository<Caracteristica, Long> baseRepository, CaracteristicaRepository caracteristicaRepository) {
         super(baseRepository);
