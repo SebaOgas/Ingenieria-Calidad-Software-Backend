@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
-import utn.ics.config.Parameter;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -15,6 +14,6 @@ import utn.ics.config.Parameter;
 @Builder
 public class ValorCaracteristica extends BaseEntity {
 
-  @Column(name = "valor", length = Parameter.shortStringLength, nullable = false, unique = false)
+  @Column(name = "valor", length = 256, nullable = false, unique = false)
   private String valor;
 }

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import utn.ics.config.Parameter;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -13,10 +12,10 @@ import utn.ics.config.Parameter;
 @Builder
 public class Producto extends BaseEntity {
 
-  @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
+  @Column(name = "nombre", length = 256, nullable = false, unique = true)
   private String nombre;
 
-  @Column(name = "descripcion", length = Parameter.longStringLength, nullable = true)
+  @Column(name = "descripcion", length = 1024, nullable = true)
   private String descripcion;
 
   @Column(name = "visibilidad", nullable = false)

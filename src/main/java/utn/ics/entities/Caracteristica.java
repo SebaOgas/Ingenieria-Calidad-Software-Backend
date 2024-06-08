@@ -2,7 +2,6 @@ package utn.ics.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import utn.ics.config.Parameter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,7 +15,7 @@ import java.util.Collection;
 @Builder
 public class Caracteristica extends BaseEntity {
 
-  @Column(name = "nombre", length = Parameter.shortStringLength, nullable = false, unique = true)
+  @Column(name = "nombre", length = 256, nullable = false, unique = true)
   private String nombre;
 
   @Builder.Default
