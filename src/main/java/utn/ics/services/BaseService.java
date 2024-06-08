@@ -1,9 +1,8 @@
 package utn.ics.services;
 
-import utn.ics.entities.BaseEntity;
-
 import java.io.Serializable;
 import java.util.List;
+import utn.ics.entities.BaseEntity;
 
 public interface BaseService<E extends BaseEntity, ID extends Serializable> {
   List<E> findAll() throws Exception;

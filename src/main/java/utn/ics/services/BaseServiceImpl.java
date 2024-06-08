@@ -1,12 +1,11 @@
 package utn.ics.services;
 
 import jakarta.transaction.Transactional;
-import utn.ics.entities.BaseEntity;
-import utn.ics.repositories.BaseRepository;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+import utn.ics.entities.BaseEntity;
+import utn.ics.repositories.BaseRepository;
 
 public abstract class BaseServiceImpl<E extends BaseEntity, ID extends Serializable>
     implements BaseService<E, ID> {
