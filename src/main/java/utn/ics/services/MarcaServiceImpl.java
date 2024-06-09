@@ -1,5 +1,6 @@
 package utn.ics.services;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,4 +25,12 @@ public class MarcaServiceImpl extends BaseServiceImpl<Marca, Long> implements Ma
     if (optionalMarca.isEmpty()) throw new Exception("No se encontró la marca");
     return optionalMarca.get();
   }
+ @Override
+ public Marca findMarcaByNombreProducto(String productoNombre) throws Exception {
+     Optional<Marca> optionalMarca = marcaRepository.findMarcaByNombreProducto(productoNombre);
+     if (optionalMarca.isEmpty()) {
+         throw new Exception("No se encontró la marca para el producto con el nombre: " + productoNombre);
+     }
+     return optionalMarca.get();
+ }
 }
