@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.DirtiesContext;
-import utn.ics.entities.Marca;
-import utn.ics.entities.Paquete;
-import utn.ics.entities.Producto;
+import utn.ics.entities.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,16 +40,26 @@ public class PaqueteRepositoryTest {
     void testObtenerPaqueteAsociado(){
         Marca marca = Marca.builder()
                 .nombre("Adidas").build();
+        Subcategoria subcategoria = Subcategoria.builder()
+                .titulo("Sub").build();
+        List<Subcategoria> subcategorias=new ArrayList<>();
+        subcategorias.add(subcategoria);
+        Categoria categoria = Categoria.builder()
+                .titulo("Categoria")
+                .subcategorias(subcategorias)
+                .build();
 
         Producto producto1 = Producto.builder()
                 .nombre("Campera boquita")
                 .marca(marca)
+                .subcategoria(subcategoria)
                 .visibilidad(true)
                 .build();
 
         Producto producto2 = Producto.builder()
                 .nombre("Campera river")
                 .marca(marca)
+                .subcategoria(subcategoria)
                 .visibilidad(true)
                 .build();
 
@@ -67,6 +75,8 @@ public class PaqueteRepositoryTest {
         paquete2.add(producto2);
 
         entityManager.persist(marca);
+        entityManager.persist(categoria);
+        entityManager.persist(subcategoria);
         entityManager.persist(producto1);
         entityManager.persist(producto2);
         entityManager.persist(paquete1);

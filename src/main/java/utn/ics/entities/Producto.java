@@ -28,4 +28,13 @@ public class Producto extends BaseEntity {
       referencedColumnName = "numero",
       foreignKey = @ForeignKey(name = "FK_producto_marca"))
   private Marca marca;
+
+  @ManyToOne
+  @JoinColumn(
+          name = "subcategoria_id",
+          nullable = false,
+          referencedColumnName = "numero",
+          foreignKey = @ForeignKey(name = "FK_producto_subcategoria"))
+  private Subcategoria subcategoria;
+
 }
