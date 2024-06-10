@@ -2,8 +2,12 @@ package utn.ics.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -16,4 +20,7 @@ public class ValorCaracteristica extends BaseEntity {
 
   @Column(name = "valor", length = 256, nullable = false, unique = false)
   private String valor;
+
+  @ManyToMany(mappedBy = "valores_caracteristica")
+  private Collection<Variante> variantes = new ArrayList<>();
 }
