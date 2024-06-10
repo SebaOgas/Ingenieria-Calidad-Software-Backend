@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import lombok.*;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "caracteristica")
 @Data
