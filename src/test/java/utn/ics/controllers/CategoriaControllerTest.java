@@ -2,12 +2,14 @@ package utn.ics.controllers;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +75,27 @@ public class CategoriaControllerTest {
         .andExpect(jsonPath("$[1].titulo", is("Pantalones")))
         .andExpect(jsonPath("$[1].subcategorias[0].titulo", is("Deportivos")))
         .andExpect(jsonPath("$[1].subcategorias[1].titulo", is("Jeans")));
+  }
+
+  @Test
+  void testCreateCategoria() throws Exception {
+    Subcategoria subcategoria = Subcategoria.builder().titulo("Zapatillas relocas").build();
+
+    Collection<Subcategoria> subcategorias = new ArrayList<>();
+    subcategorias.add(subcategoria);
+
+    Categoria categoria =
+        Categoria.builder().titulo("Zapatillas").subcategorias(subcategorias).build();
+
+    when(categoriaService.save(any(Categoria.class))).thenReturn(categoria);
+
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/categoria")
+                .content(new ObjectMapper().writeValueAsString(categoria))
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.titulo", is("Zapatillas")))
+        .andExpect(jsonPath("$.subcategorias[0].titulo", is("Zapatillas relocas")));
   }
 }
