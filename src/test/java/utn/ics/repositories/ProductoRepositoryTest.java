@@ -3,12 +3,10 @@ package utn.ics.repositories;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import jakarta.persistence.EntityManager;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -29,9 +27,10 @@ class ProductoRepositoryTest {
   void testFiltrado() {
     Marca marca = Marca.builder().nombre("ABC").descripcion("Descrip Marca").build();
     Subcategoria subcategoria = Subcategoria.builder().titulo("Sub").build();
-    List<Subcategoria> subcategorias=new ArrayList<>();
+    List<Subcategoria> subcategorias = new ArrayList<>();
     subcategorias.add(subcategoria);
-    Categoria categoria = Categoria.builder().titulo("Categoria").subcategorias(subcategorias).build();
+    Categoria categoria =
+        Categoria.builder().titulo("Categoria").subcategorias(subcategorias).build();
 
     entityManager.persist(marca);
     entityManager.flush();
@@ -64,7 +63,7 @@ class ProductoRepositoryTest {
             .descripcion("Descrip Producto")
             .visibilidad(true)
             .marca(marca)
-                .subcategoria(subcategoria)
+            .subcategoria(subcategoria)
             .build();
 
     Calendar calendar = Calendar.getInstance();

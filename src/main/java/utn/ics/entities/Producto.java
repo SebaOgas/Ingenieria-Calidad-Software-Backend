@@ -31,10 +31,9 @@ public class Producto extends BaseEntity {
 
   @ManyToOne
   @JoinColumn(
-          name = "subcategoria_id",
-          nullable = false,
-          referencedColumnName = "numero",
-          foreignKey = @ForeignKey(name = "FK_producto_subcategoria"))
+      name = "subcategoria_id",
+      nullable = false,
+      referencedColumnName = "numero",
+      foreignKey = @ForeignKey(name = "FK_producto_subcategoria"))
   private Subcategoria subcategoria;
-
 }

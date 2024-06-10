@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import lombok.*;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "caracteristica")
 @Data
@@ -25,5 +25,6 @@ public class Caracteristica extends BaseEntity {
   private Collection<ValorCaracteristica> valores = new ArrayList<>();
 
   @ManyToMany(mappedBy = "caracteristicas")
-  private Collection<Subcategoria> subcategorias=new ArrayList<>();
+  @Builder.Default
+  private Collection<Subcategoria> subcategorias = new ArrayList<>();
 }

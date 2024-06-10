@@ -1,11 +1,9 @@
 package utn.ics.services;
 
-import utn.ics.entities.Paquete;
-
-import java.util.List;
 import java.util.Optional;
+import utn.ics.entities.Paquete;
 
 public interface PaqueteService extends BaseService<Paquete, Long> {
 
-    public Optional<Paquete> findByTitulo(String titulo);
+  public Optional<Paquete> findByTitulo(String titulo);
 }

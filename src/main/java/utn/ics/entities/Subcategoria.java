@@ -1,10 +1,9 @@
 package utn.ics.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.ArrayList;
 import java.util.Collection;
+import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -13,16 +12,16 @@ import java.util.Collection;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Subcategoria extends BaseEntity{
+public class Subcategoria extends BaseEntity {
 
-    @Column(name = "titulo", length = 256, nullable = false, unique = true)
-    private String titulo;
+  @Column(name = "titulo", length = 256, nullable = false, unique = true)
+  private String titulo;
 
-    @Builder.Default
-    @ManyToMany
-    @JoinTable(
-            name = "subcaterogia-caracteristica",
-    joinColumns = @JoinColumn(name = "subcategoria_numero"),
-    inverseJoinColumns = @JoinColumn(name = "caracteristica_numero"))
-    private Collection<Caracteristica> caracteristicas=new ArrayList<>();
+  @Builder.Default
+  @ManyToMany
+  @JoinTable(
+      name = "subcaterogia-caracteristica",
+      joinColumns = @JoinColumn(name = "subcategoria_numero"),
+      inverseJoinColumns = @JoinColumn(name = "caracteristica_numero"))
+  private Collection<Caracteristica> caracteristicas = new ArrayList<>();
 }
