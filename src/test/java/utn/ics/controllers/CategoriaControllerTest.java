@@ -2,12 +2,14 @@ package utn.ics.controllers;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,22 +20,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import static org.hamcrest.Matchers.hasSize;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 import utn.ics.IcsApplication;
 import utn.ics.entities.Categoria;
 import utn.ics.entities.Subcategoria;
 import utn.ics.services.CategoriaServiceImpl;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest(classes = IcsApplication.class)
 @AutoConfigureMockMvc
@@ -71,46 +61,41 @@ public class CategoriaControllerTest {
 
     when(categoriaService.findAll()).thenReturn(categorias);
 
-        mockMvc
-            .perform(
-                MockMvcRequestBuilders.get("/categoria")
-                    .content(new ObjectMapper().writeValueAsString(categorias))
-                    .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$", hasSize(2)))
-            .andExpect(jsonPath("$[0].titulo", is("Camperas")))
-            .andExpect(jsonPath("$[0].subcategorias[0].titulo", is("Deportivas")))
-            .andExpect(jsonPath("$[0].subcategorias[1].titulo", is("Abrigo")))
-            .andExpect(jsonPath("$[0].subcategorias[2].titulo", is("Impermeables")))
-            .andExpect(jsonPath("$[1].titulo", is("Pantalones")))
-            .andExpect(jsonPath("$[1].subcategorias[0].titulo", is("Deportivos")))
-            .andExpect(jsonPath("$[1].subcategorias[1].titulo", is("Jeans")));
-    }
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.get("/categoria")
+                .content(new ObjectMapper().writeValueAsString(categorias))
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$", hasSize(2)))
+        .andExpect(jsonPath("$[0].titulo", is("Camperas")))
+        .andExpect(jsonPath("$[0].subcategorias[0].titulo", is("Deportivas")))
+        .andExpect(jsonPath("$[0].subcategorias[1].titulo", is("Abrigo")))
+        .andExpect(jsonPath("$[0].subcategorias[2].titulo", is("Impermeables")))
+        .andExpect(jsonPath("$[1].titulo", is("Pantalones")))
+        .andExpect(jsonPath("$[1].subcategorias[0].titulo", is("Deportivos")))
+        .andExpect(jsonPath("$[1].subcategorias[1].titulo", is("Jeans")));
+  }
 
-    @Test
-    void testCreateCategoria() throws Exception{
-        Subcategoria subcategoria = Subcategoria.builder()
-                .titulo("Zapatillas relocas")
-                .build();
+  @Test
+  void testCreateCategoria() throws Exception {
+    Subcategoria subcategoria = Subcategoria.builder().titulo("Zapatillas relocas").build();
 
-        Collection<Subcategoria> subcategorias = new ArrayList<>();
-        subcategorias.add(subcategoria);
+    Collection<Subcategoria> subcategorias = new ArrayList<>();
+    subcategorias.add(subcategoria);
 
-        Categoria categoria = Categoria.builder()
-                .titulo("Zapatillas")
-                .subcategorias(subcategorias)
-                .build();
+    Categoria categoria =
+        Categoria.builder().titulo("Zapatillas").subcategorias(subcategorias).build();
 
-        when(categoriaService.save(any(Categoria.class))).thenReturn(categoria);
+    when(categoriaService.save(any(Categoria.class))).thenReturn(categoria);
 
-        mockMvc
-            .perform(
-                    MockMvcRequestBuilders.post("/categoria")
-                    .content(new ObjectMapper().writeValueAsString(categoria))
-                    .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.titulo", is("Zapatillas")))
-            .andExpect(jsonPath("$.subcategorias[0].titulo", is("Zapatillas relocas")));
-
-    }
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/categoria")
+                .content(new ObjectMapper().writeValueAsString(categoria))
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.titulo", is("Zapatillas")))
+        .andExpect(jsonPath("$.subcategorias[0].titulo", is("Zapatillas relocas")));
+  }
 }
