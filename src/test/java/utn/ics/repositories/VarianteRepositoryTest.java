@@ -207,7 +207,7 @@ public class VarianteRepositoryTest {
 
         //Variantes que sean la principal para el producto
         Collection<Variante> variantesRecuperadas = varianteRepository.filtrarPrincipal("Campera de Boca",true);
-        assertEquals(3, variantesRecuperadas.size());
+        assertEquals(1, variantesRecuperadas.size());
 
     }
 }
