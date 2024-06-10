@@ -9,5 +9,4 @@ import utn.ics.services.CategoriaServiceImpl;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "categoria")
-public class CategoriaController extends BaseControllerImpl<Categoria, CategoriaServiceImpl> {
-}
+public class CategoriaController extends BaseControllerImpl<Categoria, CategoriaServiceImpl> {}

@@ -1,9 +1,8 @@
 package utn.ics.repositories;
 
+import java.util.Optional;
 import utn.ics.entities.Categoria;
 
-import java.util.Optional;
-
 public interface CategoriaRepository extends BaseRepository<Categoria, Long> {
-    public Optional<Categoria> findByTitulo(String titulo);
+  public Optional<Categoria> findByTitulo(String titulo);
 }

@@ -9,5 +9,4 @@ import utn.ics.services.PaqueteServiceImpl;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "paquetes")
-public class PaqueteControllerImpl extends BaseControllerImpl<Paquete, PaqueteServiceImpl>{
-}
+public class PaqueteControllerImpl extends BaseControllerImpl<Paquete, PaqueteServiceImpl> {}
