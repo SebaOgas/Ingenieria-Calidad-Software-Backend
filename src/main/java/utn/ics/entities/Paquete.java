@@ -21,6 +21,7 @@ public class Paquete extends BaseEntity {
     private String titulo;
 
     @ManyToMany
+    @Builder.Default
     @JoinTable(
             name = "paquetes_productos",
             joinColumns = @JoinColumn(name = "numero_paquete"),

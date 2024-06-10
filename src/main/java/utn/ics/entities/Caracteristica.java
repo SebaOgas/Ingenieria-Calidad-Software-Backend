@@ -25,5 +25,6 @@ public class Caracteristica extends BaseEntity {
   private Collection<ValorCaracteristica> valores = new ArrayList<>();
 
   @ManyToMany(mappedBy = "caracteristicas")
+  @Builder.Default
   private Collection<Subcategoria> subcategorias=new ArrayList<>();
 }
