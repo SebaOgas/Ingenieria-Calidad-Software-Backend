@@ -41,6 +41,6 @@ tasks.named('test') {
 
 jar {
 	manifest {
-		attributes 'RestfakeApplication': 'com.facu.restfake.RestfakeApplication' // Reemplaza 'tu.paquete.MainClass' con la clase principal de tu aplicación
+		attributes 'IcsApplication': 'utn.ics.IcsApplication' // Reemplaza 'tu.paquete.MainClass' con la clase principal de tu aplicación
 	}
 }
