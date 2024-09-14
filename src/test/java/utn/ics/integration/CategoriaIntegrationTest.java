@@ -2,20 +2,16 @@ package utn.ics.integration;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
@@ -32,25 +28,19 @@ public class CategoriaIntegrationTest {
 
   @Autowired private MockMvc mockMvc;
 
-  @Autowired
-  private CategoriaRepository categoriaRepository;
+  @Autowired private CategoriaRepository categoriaRepository;
 
   @Test
   void getAllCategorias() throws Exception {
 
-    Categoria categoria1 =
-        Categoria.builder().titulo("Camperas").build();
+    Categoria categoria1 = Categoria.builder().titulo("Camperas").build();
     categoriaRepository.save(categoria1);
 
-
-    Categoria categoria2 =
-        Categoria.builder().titulo("Pantalones").build();
+    Categoria categoria2 = Categoria.builder().titulo("Pantalones").build();
     categoriaRepository.save(categoria2);
 
     mockMvc
-        .perform(
-            MockMvcRequestBuilders.get("/categoria")
-                .contentType(MediaType.APPLICATION_JSON))
+        .perform(MockMvcRequestBuilders.get("/categoria").contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$", hasSize(2)))
         .andExpect(jsonPath("$[0].titulo", is("Camperas")))
