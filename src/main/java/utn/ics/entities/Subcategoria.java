@@ -20,7 +20,7 @@ public class Subcategoria extends BaseEntity {
   @Builder.Default
   @ManyToMany
   @JoinTable(
-      name = "subcaterogia-caracteristica",
+      name = "subcategoria-caracteristica",
       joinColumns = @JoinColumn(name = "subcategoria_numero"),
       inverseJoinColumns = @JoinColumn(name = "caracteristica_numero"))
   private Collection<Caracteristica> caracteristicas = new ArrayList<>();
