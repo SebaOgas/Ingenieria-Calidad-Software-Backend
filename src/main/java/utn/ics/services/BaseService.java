@@ -1,18 +1,17 @@
 package utn.ics.services;
 
-import utn.ics.entities.BaseEntity;
-
 import java.io.Serializable;
 import java.util.List;
+import utn.ics.entities.BaseEntity;
 
-public interface BaseService <E extends BaseEntity,ID extends Serializable>{
-    public List<E> findAll() throws Exception;
+public interface BaseService<E extends BaseEntity, ID extends Serializable> {
+  List<E> findAll() throws Exception;
 
-    public E findById(ID id) throws Exception;
+  E findById(ID id) throws Exception;
 
-    public E save(E entity) throws Exception;
+  E save(E entity) throws Exception;
 
-    public E update(ID id, E entity) throws Exception;
+  E update(ID id, E entity) throws Exception;
 
-    public boolean delete(ID id) throws Exception;
+  boolean delete(ID id) throws Exception;
 }

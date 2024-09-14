@@ -1,6 +1,5 @@
 package utn.ics.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -11,19 +10,30 @@ import lombok.EqualsAndHashCode;
 @Table(name = "producto")
 @Data
 @Builder
-public class Producto extends BaseEntity{
+public class Producto extends BaseEntity {
 
-    @Column(name = "nombre", length = 256, nullable = false, unique = true)
-    private String nombre;
+  @Column(name = "nombre", length = 256, nullable = false, unique = true)
+  private String nombre;
 
-    @Column(name = "descripcion", length = 1024, nullable = true)
-    private String descripcion;
+  @Column(name = "descripcion", length = 1024, nullable = true)
+  private String descripcion;
 
-    @Column(name = "visibilidad", nullable = false)
-    private Boolean visibilidad;
+  @Column(name = "visibilidad", nullable = false)
+  private Boolean visibilidad;
 
-    @ManyToOne
-    @JoinColumn(name = "marca_id", nullable = false, referencedColumnName = "numero", foreignKey = @ForeignKey(name = "FK_producto_marca"))
-    private Marca marca;
+  @ManyToOne
+  @JoinColumn(
+      name = "marca_id",
+      nullable = false,
+      referencedColumnName = "numero",
+      foreignKey = @ForeignKey(name = "FK_producto_marca"))
+  private Marca marca;
 
+  @ManyToOne
+  @JoinColumn(
+      name = "subcategoria_id",
+      nullable = false,
+      referencedColumnName = "numero",
+      foreignKey = @ForeignKey(name = "FK_producto_subcategoria"))
+  private Subcategoria subcategoria;
 }
