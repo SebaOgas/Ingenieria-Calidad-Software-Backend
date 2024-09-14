@@ -18,7 +18,7 @@ public class Categoria extends BaseEntity {
   private String titulo;
 
   @Builder.Default
-  @OneToMany
+  @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(nullable = false, foreignKey = @ForeignKey(name = "FK_subcategoria_categoria"))
   private Collection<Subcategoria> subcategorias = new ArrayList<>();
 }
