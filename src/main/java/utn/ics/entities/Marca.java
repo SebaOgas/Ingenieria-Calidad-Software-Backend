@@ -11,6 +11,8 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "marca")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Marca extends BaseEntity {
 
