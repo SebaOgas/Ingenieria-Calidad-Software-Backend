@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main-production", "main" ]
 
 env:
   JAVA_FILE_NAME: google_checks.xml
@@ -76,10 +76,11 @@ jobs:
       run: ./gradlew build
 
   deploy:
+    if:  (github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main-production' )
     name: Deploy to Render
     runs-on: ubuntu-latest
     needs: build
-    if:  github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main-production' && github.event.pull_request.head.ref == 'main'
+    
     steps:
       - name: Deploy to Render
         run: |
