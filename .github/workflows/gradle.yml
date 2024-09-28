@@ -1,8 +1,6 @@
 name: CI Java (Spring Boot) con Gradle
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main-production", "main" ]
 
