@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "main-production" ]
 
 env:
   JAVA_FILE_NAME: google_checks.xml
