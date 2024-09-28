@@ -13,6 +13,8 @@ env:
   VALIDATE_JSCPD: false
   VALIDATE_SHELL_SHFMT: false
   VALIDATE_GOOGLE_JAVA_FORMAT: false #Ya lo estamos formateando así, no tiene sentido verificarlo
+  VALIDATE_DOCKERFILE_HADOLINT: false
+  VALIDATE_GROOVY: false
 
 jobs:
   formatting:
