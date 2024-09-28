@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "main-production" ]
 
 env:
   JAVA_FILE_NAME: google_checks.xml
@@ -75,6 +75,9 @@ jobs:
     - name: Build Gradle
       run: ./gradlew build
 
+    - name: Ayuda
+      run: echo "${{github.event_name}} ${{github.event.pull_request.base.ref}} ${{github.event.pull_request.head.ref}}"
+
   deploy:
     name: Deploy to Render
     runs-on: ubuntu-latest
@@ -86,3 +89,4 @@ jobs:
           curl -X POST https://api.render.com/v1/services/${{ secrets.RENDER_ID }}/deploys \
             -H "Authorization: Bearer ${{ secrets.RENDER_TOKEN }}" \
             -H "Content-Type: application/json" \
+      
